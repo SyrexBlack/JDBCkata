@@ -18,7 +18,7 @@ public class Util {
             }
         } catch (SQLException e) {
             System.out.println("Нет подключения");
-            e.printStackTrace();  // Добавляем вывод стека исключений
+            e.printStackTrace();
         }
         return connection;
     }
