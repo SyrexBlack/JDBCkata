@@ -8,36 +8,46 @@ import jm.task.core.jdbc.util.Util;
 import java.sql.SQLException;
 import java.util.List;
 
-public class UserServiceImpl extends Util implements UserService {
+public class UserServiceImpl implements UserService {
     private UserDao userDaoJDBC = new UserDaoJDBCImpl();
+    private Util util = new Util();
+
     @Override
     public void createUsersTable() {
         userDaoJDBC.createUsersTable();
     }
+
     @Override
     public void dropUsersTable() {
         userDaoJDBC.dropUsersTable();
     }
+
     @Override
     public void saveUser(String name, String lastName, byte age) {
-        userDaoJDBC.saveUser(name,lastName,age);
+        userDaoJDBC.saveUser(name, lastName, age);
         System.out.println("User: " + name + " добавлен в базу данных");
     }
+
     @Override
     public void removeUserById(long id) {
         userDaoJDBC.removeUserById(id);
     }
+
     @Override
     public List<User> getAllUsers() {
-        List<User> users =  userDaoJDBC.getAllUsers();
+        List<User> users = userDaoJDBC.getAllUsers();
         for (User user : users) {
             System.out.println(user);
         }
         return users;
     }
+
     @Override
-    public void cleanUsersTable() throws SQLException {
-        userDaoJDBC.cleanUsersTable();
+    public void cleanUsersTable() {
+        try {
+            userDaoJDBC.cleanUsersTable();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
-
