@@ -10,7 +10,6 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
     private UserDao userDaoJDBC = new UserDaoJDBCImpl();
-    private Util util = new Util();
 
     @Override
     public void createUsersTable() {

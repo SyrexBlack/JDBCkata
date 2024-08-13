@@ -14,12 +14,11 @@ public class Util {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             if (!connection.isClosed()) {
-                System.out.println("Ну типа подключился, и чо?");
-            }
-        } catch (SQLException e) {
-            System.out.println("Нет подключения");
-            e.printStackTrace();
+                System.out.println("Подключился... Наверное");}
         }
+        catch (SQLException e) {
+            System.out.println("Нет подключения");
+            e.printStackTrace();}
         return connection;
     }
 }
